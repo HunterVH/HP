@@ -6,8 +6,6 @@ import threading
 
 def writeLog(packetData, clientsocket, address):
     try:
-        print("Writing\n")
-
         # Open Log File
         reqLog = open('SocketLog.txt', 'a')
 
@@ -62,7 +60,6 @@ def bindWrite(serverReceive):
 
     while(True):
         try:
-            print("Waiting...")
             (clientsocket, address) = serverReceive.accept()
 
             data = clientsocket.recv(8192).decode("utf-8")
@@ -98,19 +95,19 @@ def bindWrite(serverReceive):
 def main():
     server80 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server80.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR)
-    server80.bind(('localhost',80))
+    server80.bind((socket.gethostname(),80))
     server80.listen(5)
     server591 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server591.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR)
-    server591.bind(('localhost',591))
+    server591.bind((socket.gethostname(),591))
     server591.listen(5)
     server8008 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server8008.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR)
-    server8008.bind(('localhost',8008))
+    server8008.bind((socket.gethostname(),8008))
     server8008.listen(5)
     server8080 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server8080.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR)
-    server8080.bind(('localhost',8080))
+    server8080.bind((socket.gethostname(),8080))
     server8080.listen(5)
     
     
